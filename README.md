@@ -1,4 +1,4 @@
-# AuroraPress
+# AuroraPress - Coming soon!
 
 AuroraPress is a high-throughput webhook-as-a-service platform built with Ruby on Rails, hosted on Heroku. It supports real-time event delivery to client-provided HTTPS endpoints with secure HMAC-signed payloads and handles 5,000+ webhook events per second using scalable, event-driven architecture.
 
