@@ -39,3 +39,39 @@ The architecture is designed to efficiently process, queue, and deliver webhook 
    - Failed deliveries are retried using exponential backoff until a configurable maximum retry count is reached.
   
 ---
+
+## **End-to-End Flow**
+
+1. **Event Trigger**
+   - An event (e.g., `email.opened`) is generated in the Rails application.
+
+2. **Publish to SNS**
+   - The event is published to AWS SNS (Simple Notification Service) for distribution.
+
+3. **Event Fan-Out**
+   - AWS SNS distributes the event to:
+     - **Amazon SQS**: For queuing and eventual processing by Sidekiq.
+     - **AWS Lambda**: For lightweight processing tasks.
+
+4. **Job Processing**
+   - **Sidekiq** workers fetch jobs from Redis or Amazon SQS and process them.
+
+5. **Webhook Delivery**
+   - The processed job is sent to the client’s HTTPS webhook endpoint with a secure HMAC signature for verification.
+
+6. **Retry on Failure**
+   - If delivery fails, the system retries with exponential backoff until the maximum retries are reached.
+
+---
+
+## **Technologies Used**
+
+- **Ruby on Rails**: Core framework for application logic and API development.
+- **Heroku**: Hosting platform for simplified deployment and scalability.
+- **AWS SNS**: Event distribution for real-time notifications.
+- **AWS SQS**: Scalable queue for decoupling job processing.
+- **Redis**: Local queue for high-priority job caching.
+- **Sidekiq**: Background job processing with retry logic.
+- **AWS Lambda**: Lightweight task execution.
+- **HMAC**: Secure webhook payload authentication.
+   
