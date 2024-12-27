@@ -78,4 +78,4 @@ The architecture is designed to efficiently process, queue, and deliver webhook 
 ---
 
 ## **Contact**
- - Contact me on shuklavishwam111@gmail.com for more information
+ - Contact me on shuklavishwam111@gmail.com for more information on any specifics. Happy to discuss requirements.
