@@ -54,7 +54,7 @@ The architecture is designed to efficiently process, queue, and deliver webhook 
      - **AWS Lambda**: For lightweight processing tasks.
 
 4. **Job Processing**
-   - Sidekiqetches jobs from Amazon SQS and stores them in Redis for faster, prioritized local processing.
+   - Sidekiq fetches jobs from Amazon SQS and stores them in Redis for faster, prioritized local processing.
    - Workers process jobs from Redis, handling retries, rate-limiting, and exponential backoff as needed.
 
 5. **Webhook Delivery**
